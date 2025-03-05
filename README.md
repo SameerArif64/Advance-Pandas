@@ -10,4 +10,4 @@
 
 ## Installation
 ```bash
-pip install advancepandas
+pip install git+https://github.com/SameerArif64/Advance-Pandas

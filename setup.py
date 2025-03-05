@@ -13,7 +13,7 @@ setup(
     description="Enhanced pandas DataFrame with async save, format retention, and backups.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/SameerArif64/AdvancePandas",
+    url="https://github.com/SameerArif64/Advance-Pandas",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
