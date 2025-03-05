@@ -9,7 +9,8 @@ from tempfile import NamedTemporaryFile
 from shutil import move, copy2
 from multiprocessing import Process
 from tkinter import filedialog, messagebox
-from .utilities import wait_for_file_availability, always_on_top_dialog
+from file_utils import wait_for_file_availability
+from window_utils import always_on_top_dialog
 
 
 class AdvancePandas(pd.DataFrame):
