@@ -1,4 +1,4 @@
-git+https://github.com/SameerArif64/File-Utils.git#egg=file_utils
-git+https://github.com/SameerArif64/Window-Utils.git#egg=window_utils
 openpyxl==3.1.5
 pandas==2.2.3
+git+https://github.com/SameerArif64/Simple-Functions
+git+https://github.com/SameerArif64/Tkinter-Helping-Functions
