@@ -1,1 +1,1 @@
-from .advance_pandas import AdvancePandas, AdvanceExcelReader
+from .advance_pandas import AdvanceDataframe, AdvanceExcelReader
