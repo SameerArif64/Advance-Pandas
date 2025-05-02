@@ -13,7 +13,7 @@ from simple_func import wait_for_file_availability
 from tkinter_helping_func import always_on_top_dialog
 
 
-class AdvancePandas(pd.DataFrame):
+class AdvanceDataframe(pd.DataFrame):
     """
     A subclass of pandas DataFrame that adds advanced save functionality,
     including async saving, format retention, and automatic backups.
@@ -22,7 +22,7 @@ class AdvancePandas(pd.DataFrame):
     
     def __init__(self, dataframe=None, source_file: Optional[Union[str, Path]] = None, destination_file: Optional[Union[str, Path]] = None, **kwargs):
         """
-        Initialize the AdvancePandas object with optional source and destination file paths.
+        Initialize the AdvanceDataframe object with optional source and destination file paths.
         
         Parameters:
         - dataframe: The initial DataFrame content.
@@ -31,6 +31,8 @@ class AdvancePandas(pd.DataFrame):
         """
         self.source_file = source_file
         self.destination_file = destination_file
+        if dataframe is None:
+            dataframe = pd.DataFrame()
         super().__init__(dataframe, **kwargs)
     
     def save(self, file_path: Optional[Union[str, Path]] = None, async_mode: bool = False, retain_format: bool = False, auto_open: bool = False, create_backup: bool = False):
@@ -49,7 +51,7 @@ class AdvancePandas(pd.DataFrame):
                 file_path = self.destination_file
             else:
                 if self.source_file:
-                    if always_on_top_dialog(messagebox.askyesno, "AdvancePandas Notice", f"No destination file found.\nSave to source file?\nSource File: {self.source_file}"):
+                    if always_on_top_dialog(messagebox.askyesno, "AdvanceDataframe Notice", f"No destination file found.\nSave to source file?\nSource File: {self.source_file}"):
                         file_path = self.source_file
                     else:
                         filetypes = [
@@ -108,7 +110,7 @@ class AdvancePandas(pd.DataFrame):
             if retain_format:
                 if reference_file := file_path if file_path.exists() else self.source_file:
                     if Path(reference_file).suffix in ['.xlsx', '.xls']:
-                        AdvancePandas._transfer_excel_format(reference_file, temp_file_path, self)
+                        AdvanceDataframe._transfer_excel_format(reference_file, temp_file_path, self)
                 
             if file_path.exists():
                 wait_for_file_availability(file_path)
@@ -155,12 +157,12 @@ class AdvancePandas(pd.DataFrame):
 
     @property
     def _constructor(self):
-        return AdvancePandas
+        return AdvanceDataframe
     
 
-def AdvanceExcelReader(source_file: Union[str, Path], destination_file: Optional[Union[str, Path]] = None, continue_from_saved: bool = False) -> AdvancePandas:
+def AdvanceExcelReader(source_file: Union[str, Path], destination_file: Optional[Union[str, Path]] = None, continue_from_saved: bool = False) -> AdvanceDataframe:
     """
-    Read an Excel or CSV file into an AdvancePandas instance.
+    Read an Excel or CSV file into an AdvanceDataframe instance.
     
     Parameters:
     - source_file: The path to the source Excel or CSV file.
@@ -178,4 +180,4 @@ def AdvanceExcelReader(source_file: Union[str, Path], destination_file: Optional
     
     df = pd.read_csv(source_file) if source_file.suffix == ".csv" else pd.read_excel(source_file)
     
-    return AdvancePandas(df, source_file=source_file, destination_file=destination_file)
+    return AdvanceDataframe(df, source_file=source_file, destination_file=destination_file)

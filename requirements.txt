@@ -1,4 +1,5 @@
+ 
 openpyxl==3.1.5
 pandas==2.2.3
-git+https://github.com/SameerArif64/Simple-Functions
-git+https://github.com/SameerArif64/Tkinter-Helping-Functions
+simple_func @ git+https://github.com/SameerArif64/Simple-Functions 
+tkinter_helping_func @ git+https://github.com/SameerArif64/Simple-Functions 
